@@ -1,0 +1,101 @@
+# A simple chatbot that can chat with users and solve basic math problems. It also allows users to switch between chat mode and math mode.
+# Homepage
+def simple_chatbot():
+        print("Hello! I'm a simple chatbot. Please tell me your name.")
+        userInputName = input("My name is: ")
+        print(f"Nice to meet you, {userInputName}! Choose a mode: 'chat_mode' for chatting or 'math_mode' for solving math problems.")
+        inputChoice = input("Enter your choice: ")
+        while inputChoice.lower() not in ['chat_mode', 'math_mode']: 
+            print("Invalid mode selected. Please choose 'chat_mode' or 'math_mode'.")
+            inputChoice = input("Enter your choice: ")
+        if inputChoice.lower() == 'math_mode':
+            math_mode()
+        elif inputChoice.lower() == 'chat_mode':
+            chat_mode()
+        else:
+                print("Invalid mode selected. Please choose 'chat_mode' or 'math_mode'.")
+# This is the first mode: Math mode, it can calculate the expressions entered by the user. It only allows numbers and basic math operators and you can go to chat mode by typing 'exit'.
+def math_mode():
+    import math
+    print("Welcome to math mode! You can enter a math expression, and I'll try to solve it for you.")
+    while True:
+        user_input = input("Enter a math expression (type 'exit' to leave math mode or 'chat_mode' to switch to chat mode): ")
+        allowed_chars = "0123456789+-*/(). "
+        if all(char in allowed_chars for char in user_input):
+            try:
+                result = eval(user_input)
+                print(f"The answer is: {result}")
+            except Exception as e:
+                print(f"Error: {e}. Please enter a valid math expression.")
+        elif user_input.lower() == 'exit':
+            print("Exiting math mode. Returning to home.")
+            simple_chatbot()
+            break
+        elif user_input.lower() == 'chat_mode':
+            print("Switching to chat mode.")
+            chat_mode()
+            break
+        else:
+            print("Error: Invalid math expression!")
+
+# This is the second mode: Chat mode, it can chat with the user and respond to some basic questions. It also allows users to switch to math mode by typing 'math_mode' or exit the chatbot by typing 'exit'.
+def chat_mode():
+    print("Welcome to chat mode! You can ask me anything or just chat. Type 'math_mode' to switch to math mode.")
+    while True:
+        # Get user input and respond to it. It also allows users to switch to math mode or exit the chatbot.
+        user_input = input("You: ")
+        if user_input.lower() == 'math_mode':
+            math_mode()
+            break
+        # How to exit or switch to math mode
+        elif user_input.lower() in ['exit', 'quit', 'bye', 'I gotta go', 'see you later', 'goodbye', 'good bye', 'talk to you later', 'catch you later', 'see ya', 'see ya later', 'bye bye' , 'farewell', 'adios', 'sayonara', 'later', 'cya', 'cya later', 'peace out', 'gotta go']:
+                print("Exiting chat mode. Returning to home. Goodbye!")
+                simple_chatbot()
+                break
+        # Basic responses to common questions
+        # Greeting
+        elif user_input.lower() in ['hello', 'hi', 'hey']:
+            print("Chatbot: Hello! How can I help you today?")
+            # Thank you responses
+            if user_input.lower() in ['thank you', 'thanks', 'thank you very much', 'thanks a lot', 'thank you so much', 'ty', 'thx', 'thnx', 'thank you very much!', 'thanks a lot!', 'thank you so much!', 'ty!', 'thx!', 'thnx!',]:
+                print("Chatbot: You're welcome! I'm here to help.")
+            else:
+                print("Chatbot: Is there anything else you'd like to talk about?")
+        # Weather
+        elif user_input.lower() in ['what is the weather like?', 'what is the weather?', 'weather', '''what's the weather like?''', '''what's the weather?''']:
+            print("Chatbot: I'm not sure about the weather, but I hope it's nice where you are!")
+            # Thank you responses
+            if user_input.lower() in ['thank you', 'thanks', 'thank you very much', 'thanks a lot', 'thank you so much', 'ty', 'thx', 'thnx', 'thank you very much!', 'thanks a lot!', 'thank you so much!', 'ty!', 'thx!', 'thnx!']:
+                print("Chatbot: You're welcome! I'm here to help.")
+            else:
+                print("Chatbot: Is there anything else you'd like to talk about?")
+        # How are you
+        elif user_input.lower() in ['how are you?', 'how r u', 'how are you', 'how are you doing?']:
+            print("Chatbot: I'm doing great! Thanks for asking.")
+            # Thank you responses
+            if user_input.lower() in ['thank you', 'thanks', 'thank you very much', 'thanks a lot', 'thank you so much', 'ty', 'thx', 'thnx', 'thank you very much!', 'thanks a lot!', 'thank you so much!', 'ty!', 'thx!', 'thnx!']:
+                print("Chatbot: You're welcome! I'm here to help.")
+            else:
+                print("Chatbot: Is there anything else you'd like to talk about?")
+        # Name
+        elif user_input.lower() in ['what is your name?', 'what is your name', 'who are you?', 'who are you', '''what's your name?''', '''what's your name''']:
+            print("Chatbot: My name is Frost, a chatbot created to assist you. You can call me anything you want!")
+            # Thank you responses
+            if user_input.lower() in ['thank you', 'thanks', 'thank you very much', 'thanks a lot', 'thank you so much', 'ty', 'thx', 'thnx', 'thank you very much!', 'thanks a lot!', 'thank you so much!', 'ty!', 'thx!', 'thnx!']:
+                print("Chatbot: You're welcome! I'm here to help.")
+            else:
+                print("Chatbot: Is there anything else you'd like to talk about?")
+        # Capabilities
+        elif user_input.lower() in ['what can you do?', 'what can you do', 'what are your capabilities?', 'what are your capabilities']:
+            print("Chatbot: I can chat with you, answer simple questions, and provide basic assistance. I'm here to make your day better!")
+            # Thank you responses
+            if user_input.lower() in ['thank you', 'thanks', 'thank you very much', 'thanks a lot', 'thank you so much', 'ty', 'thx', 'thnx', 'thank you very much!', 'thanks a lot!', 'thank you so much!', 'ty!', 'thx!', 'thnx!']:
+                print("Chatbot: You're welcome! I'm here to help.")
+            else:
+                print("Chatbot: Is there anything else you'd like to talk about?")
+        # Default response for unrecognized input
+        else:
+            print(f"Chatbot: I don't quite understand that. Can you please rephrase or ask something else?")
+# Start the chatbot
+simple_chatbot()
+
